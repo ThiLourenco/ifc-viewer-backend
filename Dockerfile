@@ -12,6 +12,8 @@ RUN npm install
 # Copia código
 COPY . .
 
+RUN mkdir -p uploads
+
 # Gera Prisma Client
 RUN npx prisma generate
 
