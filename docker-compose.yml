@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: ifc_backend
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - ./uploads:/usr/src/app/uploads  # ✅ CORRETO
+    environment:
+      - DATABASE_URL=postgresql://ifc_user:ifc_pass@db:5432/ifc_db
+    depends_on:
+      - db
+    command: sh -c "npx prisma generate && npm run dev"
+
+  db:
+    image: postgres:15-alpine
+    container_name: ifc_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=ifc_user
+      - POSTGRES_PASSWORD=ifc_pass
+      - POSTGRES_DB=ifc_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
