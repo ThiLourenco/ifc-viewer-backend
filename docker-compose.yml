@@ -11,7 +11,7 @@ services:
       - /usr/src/app/node_modules
       - ./uploads:/usr/src/app/uploads  # ✅ CORRETO
     environment:
-      - DATABASE_URL=postgresql://ifc_user:ifc_pass@db:5432/ifc_db
+      - DATABASE_URL=postgresql://ifc_user:iE6B8eA6QjBP6BIPV3awhE2CKbLsfIAi@dpg-d783dp5m5p6s73ehplk0-a/ifc_db_kvkz
     depends_on:
       - db
     command: sh -c "npx prisma generate && npm run dev"
@@ -24,8 +24,8 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=ifc_user
-      - POSTGRES_PASSWORD=ifc_pass
-      - POSTGRES_DB=ifc_db
+      - POSTGRES_PASSWORD=iE6B8eA6QjBP6BIPV3awhE2CKbLsfIAi
+      - POSTGRES_DB=ifc_db_kvkz
     volumes:
       - pgdata:/var/lib/postgresql/data
 
