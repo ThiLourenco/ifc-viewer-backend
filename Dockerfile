@@ -20,4 +20,5 @@ RUN npx prisma generate
 EXPOSE 3001
 
 # Comando padrão (produção)
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+CMD sh -c "npx prisma generate && npx prisma db push && npm run dev"
