@@ -14,7 +14,7 @@ services:
       - DATABASE_URL=postgresql://ifc_user:iE6B8eA6QjBP6BIPV3awhE2CKbLsfIAi@dpg-d783dp5m5p6s73ehplk0-a/ifc_db_kvkz
     depends_on:
       - db
-    command: sh -c "npx prisma generate && npm run dev"
+    command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run dev"
 
   db:
     image: postgres:15-alpine
