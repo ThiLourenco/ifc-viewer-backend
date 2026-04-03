@@ -6,7 +6,7 @@ import projectRoutes from "./routes/project.routes";
 const app = express();
 
 app.use(cors({
-  origin: "https://lightview.vercel.app/"
+  origin: "https://lightview.vercel.app"
 }));
 app.use(express.json());
 
