@@ -23,4 +23,4 @@ EXPOSE 3001
 
 # Comando padrão (produção)
 # CMD ["npm", "run", "dev"]
-CMD sh -c "npx prisma generate && npx prisma db push && npm run dev"
+CMD sh -c "npx prisma db push --force-reset --accept-data-loss && npm run dev"

@@ -1,6 +1,4 @@
 import { projectRepository } from "../repositories/project.repository";
-import fs from "fs/promises";
-import path from "path";
 
 export const projectService = {
   async createProject(file: Express.Multer.File, name?: string) {
@@ -17,23 +15,5 @@ export const projectService = {
 
   async getProject(id: string) {
     return projectRepository.findById(id);
-  },
-
-  async deleteAllProjects() {
-    const projects = await projectRepository.findAll();
-
-    for (const project of projects) {
-      if (project.fileName) {
-        const filePath = path.resolve(process.cwd(), "uploads", project.fileName);
-        
-        try {
-          await fs.unlink(filePath);
-        } catch (error) {
-          console.warn(`Aviso: Arquivo ${project.fileName} não encontrado no disco para exclusão.`);
-        }
-      }
-    }
-
-    return projectRepository.deleteAll();
   }
 };

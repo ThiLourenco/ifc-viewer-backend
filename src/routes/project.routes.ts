@@ -8,6 +8,5 @@ const router = Router();
 router.post("/", upload.single("file"), projectController.upload);
 router.get("/", projectController.list);
 router.get("/:id", projectController.get);
-router.delete("/", projectController.deleteAll);
 
 export default router;
