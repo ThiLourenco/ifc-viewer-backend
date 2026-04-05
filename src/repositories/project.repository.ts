@@ -14,4 +14,8 @@ export const projectRepository = {
   findById(id: string) {
     return prisma.project.findUnique({ where: { id } });
   },
+
+  deleteAll() {
+    return prisma.project.deleteMany({});
+  }
 };

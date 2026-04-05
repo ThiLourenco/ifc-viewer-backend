@@ -28,5 +28,15 @@ export const projectController = {
   }
 
   res.json(project);
-}
+},
+
+  async deleteAll(req: Request, res: Response) {
+    try {
+      await projectService.deleteAllProjects();
+      res.status(200).json({ message: "Todos os projetos e arquivos foram excluídos com sucesso." });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Erro ao excluir os projetos." });
+    }
+  }
 };
